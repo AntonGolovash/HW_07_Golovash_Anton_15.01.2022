@@ -5,11 +5,11 @@
 using namespace std;
 
 template<class T>
-class Tree
+class Tree2
 {
 public:
-	Tree();
-	~Tree();
+	Tree2();
+	~Tree2();
 	void AddIteratively(T data);
 	void AddRecursively(T data);
 	void DisplayMaxMin();
@@ -34,7 +34,6 @@ private:
 			}
 		}
 		T data;
-
 		Node* parent;
 		Node* left;
 		Node* right;
@@ -42,5 +41,5 @@ private:
 	Node* _root;
 	void AddRecursivelyNode(Node** root, Node** newNode); // Рекурсивный обход дерева
 	void DisplayRecursivelyMaxMin(Node** root); // Display max - min
-	void DisplayRecursivelyMinMax(Node** root); // Display max - min
+	void DisplayRecursivelyMinMax(Node** root); // Display min - max
 };

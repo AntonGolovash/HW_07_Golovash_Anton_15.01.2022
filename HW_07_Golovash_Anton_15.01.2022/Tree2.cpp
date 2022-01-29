@@ -1,13 +1,12 @@
-#include "Tree.h"
-
+#include "Tree2.h"
 template<class T>
-Tree<T>::Tree() : _root(nullptr)
+Tree2<T>::Tree2() : _root(nullptr)
 {
     cout << "Constructor default:\t" << endl;
 }
 
 template<class T>
-Tree<T>::~Tree()
+Tree2<T>::~Tree2()
 {
     if (_root != nullptr)
     {
@@ -17,7 +16,7 @@ Tree<T>::~Tree()
 }
 
 template<class T>
-void Tree<T>::AddIteratively(T data) // Итеративный обход дерева
+void Tree2<T>::AddIteratively(T data) // Итеративный обход дерева
 {
     Node* newNode = new Node;
     newNode->parent = nullptr;
@@ -44,7 +43,7 @@ void Tree<T>::AddIteratively(T data) // Итеративный обход дерева
 }
 
 template<class T>
-void Tree<T>::AddRecursively(T data) // Рекурсивный обход дерева
+void Tree2<T>::AddRecursively(T data) // Рекурсивный обход дерева
 {
     Node* newNode = new Node;
     newNode->data = data;
@@ -55,7 +54,7 @@ void Tree<T>::AddRecursively(T data) // Рекурсивный обход дерева
 }
 
 template<class T>
-void Tree<T>::AddRecursivelyNode(Node** root, Node** newNode)
+void Tree2<T>::AddRecursivelyNode(Node** root, Node** newNode)
 {
     if ((*root) != nullptr)
     {
@@ -63,28 +62,30 @@ void Tree<T>::AddRecursivelyNode(Node** root, Node** newNode)
 
         if ((*root)->data > (*newNode)->data)
         {
-            AddRecursivelyNode(&(*root)->right, &(*newNode));
+            //(*root)->left = *newNode;
+            AddRecursivelyNode(&(*root)->left, &(*newNode));
         }
-            
+
         if ((*root)->data < (*newNode)->data)
         {
-            AddRecursivelyNode(&(*root)->left, &(*newNode));
+            //(*root)->right = *newNode;
+            AddRecursivelyNode(&(*root)->right, &(*newNode));
         }
     }
     else
     {
         *root = (*newNode); // Добавить новый Node
     }
-}
+} 
 
 template<class T>
-void Tree<T>::DisplayMaxMin()
+void Tree2<T>::DisplayMaxMin()
 {
     DisplayRecursivelyMaxMin(&_root);
 }
 
 template<class T>
-void Tree<T>::DisplayRecursivelyMaxMin(Node** root) // max - min
+void Tree2<T>::DisplayRecursivelyMaxMin(Node** root) // max - min
 {
     if ((*root) != nullptr)
     {
@@ -95,13 +96,13 @@ void Tree<T>::DisplayRecursivelyMaxMin(Node** root) // max - min
 }
 
 template<class T>
-void Tree<T>::DisplayMinMax()
+void Tree2<T>::DisplayMinMax()
 {
     DisplayRecursivelyMinMax(&_root);
 }
 
 template<class T>
-void Tree<T>::DisplayRecursivelyMinMax(Node** root) // min - max
+void Tree2<T>::DisplayRecursivelyMinMax(Node** root) // min - max
 {
     if ((*root) != nullptr)
     {
@@ -112,7 +113,7 @@ void Tree<T>::DisplayRecursivelyMinMax(Node** root) // min - max
 }
 
 template<class T>
-T& Tree<T>::GetRoot()
+T& Tree2<T>::GetRoot()
 {
     return _root->data;
 }
